@@ -1,0 +1,14 @@
+C:\Users\conti\Repos\DotnetSandbox\bin\Debug\net8.0\DotnetSandbox.exe
+C:\Users\conti\Repos\DotnetSandbox\bin\Debug\net8.0\DotnetSandbox.deps.json
+C:\Users\conti\Repos\DotnetSandbox\bin\Debug\net8.0\DotnetSandbox.runtimeconfig.json
+C:\Users\conti\Repos\DotnetSandbox\bin\Debug\net8.0\DotnetSandbox.dll
+C:\Users\conti\Repos\DotnetSandbox\bin\Debug\net8.0\DotnetSandbox.pdb
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.AssemblyInfoInputs.cache
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.AssemblyInfo.cs
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.csproj.CoreCompileInputs.cache
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.dll
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\refint\DotnetSandbox.dll
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.pdb
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\DotnetSandbox.genruntimeconfig.cache
+C:\Users\conti\Repos\DotnetSandbox\obj\Debug\net8.0\ref\DotnetSandbox.dll

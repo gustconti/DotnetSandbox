@@ -1,0 +1,1 @@
+namespace DotnetSandbox.DesignPatterns.Creational;
