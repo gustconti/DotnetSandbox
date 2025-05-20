@@ -8,8 +8,13 @@ class Program
         // Console.WriteLine("== Data Structure Demos ==");
 
         // StackDemo.Run();
-        // ListDemo.Run();
-        // QueueDemo.Run();
+        Console.WriteLine("== LinkedListDemo Demo ==");
+        LinkedListDemo.Run();
+        Console.WriteLine("== ListDemo Demo ==");
+        ListDemo.Run();
+        Console.WriteLine("== QueueDemo Demo ==");
+        QueueDemo.Run();
+        Console.WriteLine("== DictionaryDemo Demo ==");
         DictionaryDemo.Run();
 
         // Console.WriteLine("\n== Design Pattern Demos ==");

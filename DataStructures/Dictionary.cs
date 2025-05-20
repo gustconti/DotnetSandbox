@@ -1,81 +1,94 @@
-using System.Linq.Expressions;
-using System.Runtime.Serialization;
-
 namespace DotnetSandbox.DataStructures;
 
 public static class DictionaryDemo
 {
-
     public static void ValuesDictionary()
     {
+        // Value type variables holding strings as values
         string personA = "Gustavo";
-        string personB = "Gustavo";
+        string personB = "Gustavo"; // same value as personA
         string personC = "John";
+
+        // Dictionary using strings (value types) as keys
         var telephoneList = new Dictionary<string, string>
         {
             [personA] = "+55(11)91234-0000",
             [personC] = "+55(11)91234-0002"
         };
 
-        /* personA and personB are value type variables.
-         * They can be equated to each other, and also 
-         * used interchangibly as indexes
-         */
-        var equalityOperator = personA == personB;
-        var indexTest = telephoneList[personA] == telephoneList[personB];
-        var equalsMethodTest = telephoneList[personA].Equals(telephoneList[personB]);
-        var containsTest = telephoneList.ContainsKey(personB);
+        // Iterating through dictionary items using foreach
+        foreach (var element in telephoneList)
+        {
+            Console.WriteLine("Name: {0}, Telephone: {1}", element.Key, element.Value);
+        }
 
-        Console.WriteLine("personA == personB? {0}", equalityOperator);
-        Console.WriteLine("dictionary[personA] == dictionary[personB] {0}", indexTest);
-        Console.WriteLine("Equals(personB) {0}", equalsMethodTest);
-        Console.WriteLine("Contains(personB) {0}", containsTest);
+        // Dictionary allows duplicate values
+        telephoneList.Add("Bob", "+55(11)91234-0000");
+
+        // But not duplicate keys. TryAdd avoids exception.
+        telephoneList.TryAdd("Gustavo", "+55(11)91234-0001");
+
+        // Value comparison: strings with same content are equal
+        Console.WriteLine("personA == personB? {0}", personA == personB);
+
+        // Keys with same value resolve to same entry
+        Console.WriteLine("dictionary[personA] == dictionary[personB] {0}",
+            telephoneList[personA] == telephoneList[personB]
+        );
+
+        // Equals also compares string values
+        Console.WriteLine("Equals(personB) {0}",
+            telephoneList[personA].Equals(telephoneList[personB]));
+
+        // ContainsKey uses Equals() and GetHashCode() under the hood
+        Console.WriteLine("Contains(personB) {0}\n",
+            telephoneList.ContainsKey(personB));
     }
+
     public static void RefsDictionary()
     {
+        // Reference type variables (Person objects)
+        var personA = new Person { Name = "Gustavo", Age = 31 };
+        var personB = new Person { Name = "Gustavo", Age = 31 }; // same data, different instance
+        var personC = new Person { Name = "John", Age = 30 };
 
-        var personA = new Person() { Name = "Gustavo", Age = 31 };
-        var personB = new Person() { Name = "Gustavo", Age = 31 };
-        var personC = new Person() { Name = "John", Age = 30 };
-
+        // Dictionary using reference types as keys
         var telephoneList = new Dictionary<Person, string>
         {
             [personA] = "+55(11)91234-0000",
             [personC] = "+55(11)91234-0002",
         };
 
-        foreach (var element in telephoneList)
-        {
-            Console.WriteLine("Name: {0}, Telephone: {1}", element.Key.Name, element.Value);
-        }
+        // Reference equality check (false for different instances)
+        Console.WriteLine("personA == personB? {0}", personA == personB);
 
-        /* personA and personB are value type variables.
-         * They can be equated to each other, and also 
-         * used interchangibly as indexes
-         */
-        var equalityOperator = personA == personB;
-        var indexTest = telephoneList[personA] == telephoneList[personB];
-        var equalsMethodTest = telephoneList[personA].Equals(telephoneList[personB]);
-        var containsTest = telephoneList.ContainsKey(personB);
+        // Compares dictionary values. Works even though personA == personB returns false, 
+        // because Equals() and GetHashCode() have been overriden
+        Console.WriteLine("dictionary[personA] == dictionary[personB] {0}",
+            telephoneList[personA] == telephoneList[personB]); // Will throw without Equals + GetHashCode override
 
-        Console.WriteLine("personA == personB? {0}", equalityOperator);
-        Console.WriteLine("dictionary[personA] == dictionary[personB] {0}", indexTest);
-        Console.WriteLine("Equals(personB) {0}", equalsMethodTest);
-        Console.WriteLine("Contains(personB) {0}", containsTest);
+        // Equals() would return false without the override. Here, it compares the 
+        // prop values between the referrenced class instances and returns true 
+        Console.WriteLine("Equals(personB) {0}",
+            telephoneList[personA].Equals(telephoneList[personB]));
+
+        // ContainsKey relies on Equals() and GetHashCode()
+        Console.WriteLine("Contains(personB) {0}",
+            telephoneList.ContainsKey(personB));
     }
 
     public static void Run()
     {
-        RefsDictionary();
         ValuesDictionary();
+        RefsDictionary();
     }
-    
+
     public class Person
     {
         public string Name { get; set; } = string.Empty;
         public int Age { get; set; }
 
-        // Equals() now compares prop values instead of referenced class instance
+        // Overriding Equals() to compare values instead of reference
         public override bool Equals(object? obj)
         {
             if (obj is Person other)
@@ -85,12 +98,9 @@ public static class DictionaryDemo
             return false;
         }
 
+        // Overriding GetHashCode() to build hash codes based on prop values
         public override int GetHashCode()
         {
-            /*
-             * Generated hash code is now based on prop values instead of 
-             * referenced class instance, making more complex 
-             */
             return HashCode.Combine(Name, Age);
         }
     }
