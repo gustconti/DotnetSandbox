@@ -53,7 +53,7 @@ namespace DotnetSandbox.DataStructures
             public bool AddBefore(T targetValue, T newValue)
             {
                 // 1. If the very first node (Head) is null, the list is empty,
-                // there's nothing to insert before, so return false.
+                //    there's nothing to insert before, so return false.
                 if (Head is null) return false;
 
                 // 2. If the very first node (Head) contains the targetValue,
