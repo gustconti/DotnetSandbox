@@ -6,23 +6,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Data Structure Demos
+        /* Uncomment the example you want to run */
 
+        /* Data Structure Demos */
         // StackDemo.Run();
-        // Console.WriteLine("== LinkedListDemo Demo ==");
         // LinkedListDemo.Run();
-        // Console.WriteLine("== ListDemo Demo ==");
         // ListDemo.Run();
-        // Console.WriteLine("== QueueDemo Demo ==");
         // QueueDemo.Run();
-        // Console.WriteLine("== DictionaryDemo Demo ==");
         // DictionaryDemo.Run();
 
-        // Exercises
+        /* Exercises */
         // TwoSumProblem.Run();
         // IntPalindromeProblem.Run();
         // RomanToIntsProblem.Run();
-        LargestCommonPrefixProblem.Run();
+        // LargestCommonPrefixProblem.Run();
+        // ValidBracketsProblem.Run();
+        MergeTwoListsProblem.Run();
     }
 }
 

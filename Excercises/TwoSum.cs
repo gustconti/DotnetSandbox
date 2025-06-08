@@ -1,6 +1,6 @@
 namespace DotnetSandbox.Excercises
 {
-    public class Solution
+    public class TwoSumProblem
     {
         public static void Run()
         {
